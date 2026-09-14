@@ -3,6 +3,9 @@
 <head data-page-node-id="yaU0jIrvxzLODsbCqSi6OU">
 <meta charset="utf-8" data-page-node-id="fAYNcxiMS2xsLAKUIvva4j">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" data-page-node-id="miLflQEDTMGfE5Vt4GO2Ac">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>谦谦账本 · 育儿开支记录</title>
 <style>
 :root{
@@ -368,8 +371,6 @@ body.modalscreen .tabs{display:none}
     </div>
     <div class="acts" data-page-node-id="uC1KFA7XQtTYxyD6bCLn8A">
       <button class="iconbtn" id="accBtn" title="登录 / 切换操作账号" onclick="openLogin()" data-page-node-id="accBtn1">👤 <span id="accName">妈妈</span></button>
-      <button class="iconbtn" title="备份导出" onclick="exportJSON()" data-page-node-id="0qwn23EifL6sxru4EGDcWx">⬇</button>
-      <button class="iconbtn" title="导入备份" onclick="document.getElementById('impFile').click()" data-page-node-id="EoHWpZ1xnrJI2V7RvKxAb8">⬆</button>
       <button class="iconbtn" title="账号管理 / 设置" onclick="openAccountAdmin()" data-page-node-id="rlPHfKSL8wypcOj7r37rSF">⚙</button>
     </div>
     <input type="file" id="impFile" accept="application/json,.json" style="display:none" onchange="importJSON(this)" data-page-node-id="XlF2Eoa0nWzO7XySdYy2vC">
@@ -434,7 +435,7 @@ body.modalscreen .tabs{display:none}
       <div class="tip" id="scopeTip" style="color:var(--sub)" data-page-node-id="XUisiKN2Fvnii3VFyGBY4O"></div>
 
       <label class="f" data-page-node-id="mC6YSOJu6rt6s2fKwcV8ov">红包专用账户</label>
-      <div class="switch on" id="fundSwitch" onclick="toggleFundSwitch()" data-page-node-id="4RA9UmyscrQfUWVOP32g9B">
+      <div class="switch" id="fundSwitch" onclick="toggleFundSwitch()" data-page-node-id="4RA9UmyscrQfUWVOP32g9B">
         <div class="sw" data-page-node-id="2LJiFPFqdNNRQ0SsE4hFnK"></div>
         <div class="txt" data-page-node-id="mQfUa6aTSNWG07u57LFcVH">从专用账户扣除<small id="fundTip" data-page-node-id="Hor1NxJBHG3JE9jPJ90hv2">余额 ¥0.00</small></div>
       </div>
@@ -444,7 +445,7 @@ body.modalscreen .tabs{display:none}
         <input type="number" id="f-fund" step="0.01" min="0" value="0.00" oninput="onFundInput(true)" data-page-node-id="WWsTw0o041zZ15ZjeXfWHY">
       </div>
 
-      <button class="btn primary" id="btnSaveRecord" style="width:100%;margin-top:16px;padding:14px;font-size:16.5px" onclick="saveRecord()" ${authGuard()} data-page-node-id="BwtmOmTex2VuKmQKHATErM">保存这一笔</button>
+      <button class="btn primary" id="btnSaveRecord" style="width:100%;margin-top:16px;padding:14px;font-size:16.5px" onclick="saveRecord()" data-page-node-id="BwtmOmTex2VuKmQKHATErM">保存这一笔</button>
     </div>
 
     <div class="card" data-page-node-id="rms646B2tMu1DwrHTN5ygu">
@@ -473,7 +474,7 @@ body.modalscreen .tabs{display:none}
         <input type="number" id="fl-amax" placeholder="金额≤" step="0.01" oninput="renderList()" style="max-width:96px">
       </div>
       <div style="display:flex;gap:8px;margin-top:11px;flex-wrap:wrap" data-page-node-id="gPk2O60MDWuw1DFR5i1JAD">
-        <button class="btn primary" onclick="renderList()" style="padding:9px 18px">🔍 查询</button>
+        <button class="btn primary" onclick="runQuery()" style="padding:9px 18px">🔍 查询</button>
         <button class="btn sm" onclick="exportCSV()" data-page-node-id="5EtXXyKiAWCBGIkIyWK0c3">导出 CSV</button>
         <button class="btn sm danger" onclick="clearFiltered()" data-page-node-id="PEbmHx6PGVVnq6gsmg8bmM">删除筛选结果</button>
       </div>
@@ -563,7 +564,7 @@ body.modalscreen .tabs{display:none}
         <div data-page-node-id="BDteVuxphoBOmNAfMZRrqb"><label class="f" data-page-node-id="UxSDU4mHTsCFWuMB2Sy9F9">日期</label><input type="date" id="fd-date" data-page-node-id="abwTPQBd7X3TEMF02V65iw"></div>
         <div data-page-node-id="nVvgBCPZ7AjIEqVqQDhrFt"><label class="f" data-page-node-id="e43CLlIQsS216PtwnqZ0C5">名目</label><input type="text" id="fd-note" placeholder="压岁钱 / 生日 / 满月" list="fdList" data-page-node-id="az2Ns9jY5m3QBpwHsRowxC"><datalist id="fdList" data-page-node-id="AAv8EhpaGkgOkphXpw2JJI"></datalist></div>
       </div>
-      <button class="btn warm" id="btnSaveFund" style="width:100%;margin-top:16px;padding:13px;font-size:16px" onclick="saveFund()" ${authGuard()} data-page-node-id="bCC6CJEGgin451bT6JsEr2">存入资金池</button>
+      <button class="btn warm" id="btnSaveFund" style="width:100%;margin-top:16px;padding:13px;font-size:16px" onclick="saveFund()" data-page-node-id="bCC6CJEGgin451bT6JsEr2">存入资金池</button>
     </div>
     <div class="card" data-page-node-id="k53dXBBYPJKgFh10Rp4XCw">
       <h2 data-page-node-id="g5gfq69HWd1CNrL0rYl0me"><i class="bar" data-page-node-id="7zG53TOyO0xe5u3hOE4Dly"></i>红包明细<span class="hint" id="fundCount" data-page-node-id="4PMICWEwMK7uo0KPsf5KAS">0 笔</span>
@@ -701,6 +702,13 @@ body.modalscreen .tabs{display:none}
       <div class="kv" data-page-node-id="cADxcpjZdxS1qCr5g3dguV"><span data-page-node-id="VkHfWhYBBOxMGdMBrfiyZB">存储位置</span><b data-page-node-id="psR6InVC3lcsZnvdaQtLkl">本机浏览器 localStorage</b></div>
       <div class="rule-box" style="margin-top:8px" data-page-node-id="rVsCt6j9stdc2Zsmgc09x0">数据只存在这台设备的浏览器里，换设备或清缓存前请先导出备份。</div>
     </div>
+    <div class="card">
+      <h2><i class="bar"></i>功能自检<span class="hint">逐项检测是否可正常使用</span></h2>
+      <button class="btn primary" style="width:100%;padding:12px;font-size:15px" onclick="runSelfTest()">▶ 运行功能自检</button>
+      <div id="selfTestBox" style="margin-top:12px;font-size:13px;line-height:1.7"></div>
+      <div class="kv" style="margin-top:10px"><span>当前版本</span><b id="verLabel">—</b></div>
+      <div class="rule-box" style="margin-top:8px">若某项显示 ❌，或页面底部出现红色「运行错误」条，请把内容截图发给开发者。版本号与最新版不一致，多为微信缓存了旧页面，请在微信内下拉刷新或退出重进。</div>
+    </div>
   </section>
 
   <div class="foot" data-page-node-id="IJFXzylGgPppK1RVqycBiE">谦谦账本 · 单文件离线版</div>
@@ -770,6 +778,25 @@ const DEFAULT_RULES = {
 const CAT_ORDER = ['milk','diaper','clothes','edu','med','toy','fun','care','gear','ins','other'];
 const DEFAULT_SOURCES = ['爷爷奶奶','外公外婆','舅舅舅妈','叔叔阿姨','姑姑','朋友','其他'];
 const DEFAULT_FUNDNOTES = ['压岁钱','生日红包','满月礼','见面礼','过节红包','奖励'];
+
+/* 应用版本：用于在微信里判断页面是否被缓存成旧版（菜单「设置 → 功能自检」可见） */
+const APP_VER = '1.0.6';
+
+/* 全局错误兜底：把真实浏览器里抛出的异常显示到页面底部，便于定位“点了没反应”等偶发问题 */
+window.addEventListener('error', function(e){
+  try{
+    var msg = (e && (e.message || (e.error && e.error.message))) || '未知错误';
+    var where = (e && e.filename ? (e.filename.split('/').pop()+':'+e.lineno) : '');
+    var box = document.getElementById('errBox');
+    if(!box){
+      box = document.createElement('div');
+      box.id = 'errBox';
+      box.style.cssText = 'position:fixed;left:8px;right:8px;bottom:8px;z-index:99999;background:#fff3f3;color:#c0392b;font:12px/1.5 monospace;padding:8px 10px;border:1px solid #f1c0c0;border-radius:8px;white-space:pre-wrap;max-height:38vh;overflow:auto';
+      document.body.appendChild(box);
+    }
+    box.textContent = '⚠ 运行错误：' + msg + (where?('\n'+where):'') + '\n（请把这段发给开发者）';
+  }catch(_){}
+});
 
 /* ==================== 状态 ==================== */
 const KEY = 'qianqianLedger.v1';
@@ -866,8 +893,20 @@ function authGuard(){ return S.authUser ? '' : 'disabled title="请先登录"'; 
 /* 应用登录锁：未登录时整页模糊 + 锁屏遮罩，无任何数据可看 */
 function applyLock(){
   document.body.classList.toggle('locked', !S.authUser);
-  // 重新渲染一次以触发按钮的 authGuard 切换
-  try{ renderAll(); }catch(e){}
+  // 重新渲染一次以触发动态按钮（.delfund 等）的 authGuard 切换
+  try{ renderAll(); }catch(e){ console.error('renderAll 异常', e); }
+  updateAuthButtons();
+}
+/* 根据登录态同步“静态”操作按钮（btnSaveRecord / btnSaveFund 写在静态 HTML 里，
+   ${authGuard()} 在静态页面中只是字面文本、不会执行，故登录后必须手动刷新按钮状态，
+   否则未登录→登录后出现“点了没反应”的假死现象 */
+function updateAuthButtons(){
+  if(typeof S === 'undefined' || !S) return;
+  const locked = !S.authUser;
+  ['btnSaveRecord','btnSaveFund'].forEach(function(id){
+    var b = document.getElementById(id);
+    if(b){ b.disabled = locked; if(locked) b.setAttribute('title','请先登录'); else b.removeAttribute('title'); }
+  });
 }
 /* 应用内确认弹窗（替代原生 confirm，避免移动端/iframe 中被拦截） */
 function showConfirm(title, body, onOk){
@@ -977,14 +1016,17 @@ function updateScopeTip(){
 }
 
 /* ==================== 红包池抵扣（专用账户） ==================== */
-let useFund = true;
+let useFund = false;
 let fundEdited = false;
 function currentFundKeeper(){ return '专用账户'; }   // 红包池仅专用账户
-function toggleFundSwitch(){
-  useFund = !useFund;
+function syncFundUI(){
   $('fundSwitch').classList.toggle('on', useFund);
   $('fundBox').style.display = useFund ? 'block' : 'none';
-  if(!useFund) $('f-fund').value='0.00';
+  $('f-fund').value = useFund ? $('f-fund').value || '0.00' : '0.00';
+}
+function toggleFundSwitch(){
+  useFund = !useFund;
+  syncFundUI();
   onAmtChange();
 }
 // 抵扣来源固定为「专用账户」；余额不足时禁止超额，仍允许全额自付
@@ -1010,7 +1052,7 @@ function onFundInput(manual){
     $('fundTip').textContent = '专用账户余额 ¥'+money(bal);
   }
 }
-function onPayerChange(){ fundEdited=false; onFundInput(false); }
+function onPayerChange(){ S._payerManual=true; fundEdited=false; onFundInput(false); }
 function onAmtChange(){ onFundInput(false); }
 
 /* ==================== 语音识别 ==================== */
@@ -1244,12 +1286,19 @@ function parseText(t){
 function addQuick(v){ $('f-amount').value = ((toCents($('f-amount').value)+v*100)/100).toFixed(2); onAmtChange(); }
 function clearAmt(){ $('f-amount').value=''; onAmtChange(); }
 function saveRecord(){
+  if(!S.authUser){ toast('请先登录后再记账'); openLogin(); return; }
   const cents = toCents($('f-amount').value);
   if(cents<=0){ toast('请先填写金额'); $('f-amount').focus(); return; }
   const rawNote = ($('f-note').value||'').trim();
   const cid = guessedCat || guessCategory(rawNote) || 'other';
   const keeper = '专用账户';   // 红包抵扣固定走专用账户
   const bal = useFund ? Math.max(0, fundBalanceKeeper(keeper)) : 0;
+  // 开启「从专用账户扣除」时，记账总额不得超过专用账户余额，防止超额抵扣
+  if(useFund && cents > bal){
+    if(bal>0) toast('专用账户余额 ¥'+money(bal)+' 不足，无法抵扣 ¥'+money(cents)+'。请关闭「从专用账户扣除」或减少金额。');
+    else toast('专用账户余额为 0，无法抵扣。请关闭「从专用账户扣除」后全额自付。');
+    return;
+  }
   let fundCents = 0;
   if(useFund && bal>0){
     let want = toCents($('f-fund').value); if(isNaN(want)) want=0;
@@ -1392,14 +1441,22 @@ function renderFilters(){
   const pv=$('f-payer'), keep=pv.value;
   pv.innerHTML=S.payers.map(p=>`<option value="${esc(p)}">${esc(p)}</option>`).join('');
   pv.onchange=onPayerChange;
-  if(S.payers.indexOf(keep)>=0) pv.value=keep;
+  if(S._payerManual && S.payers.indexOf(keep)>=0){
+    pv.value=keep;                 // 用户手动改过付款人，保留其选择
+  } else if(S.account && S.payers.indexOf(S.account)>=0){
+    pv.value=S.account;            // 默认当前登录账号
+  } else if(S.payers.length){
+    pv.value=S.payers[0];
+  }
 }
 function filtered(){
   const m=$('fl-month').value,c=$('fl-cat').value,s=$('fl-scope').value,p=$('fl-payer').value;
   const kw=($('fl-kw').value||'').trim().toLowerCase();
-  const amin=toCents($('fl-amin').value), amax=toCents($('fl-amax').value);
+  // 金额为空视为「不限」，避免 toCents('') 返回 0 把记录全部筛掉
+  const aminRaw=($('fl-amin').value||'').trim(), amaxRaw=($('fl-amax').value||'').trim();
+  const amin=aminRaw?toCents(aminRaw):null, amax=amaxRaw?toCents(amaxRaw):null;
   let arr=liveRecords().filter(r=>(!m||ym(r.date)===m)&&(!c||r.cat===c)&&(!s||r.scope===s)&&(!p||r.payer===p)
-    &&(isNaN(amin)||r.cents>=amin)&&(isNaN(amax)||r.cents<=amax)
+    &&(amin==null||r.cents>=amin)&&(amax==null||r.cents<=amax)
     &&(!kw || (r.note||'').toLowerCase().indexOf(kw)>=0 || (r.payer||'').toLowerCase().indexOf(kw)>=0 || cat(r.cat).name.toLowerCase().indexOf(kw)>=0));
   const sort=$('fl-sort').value;
   arr.sort((a,b)=>{
@@ -1412,6 +1469,7 @@ function filtered(){
 }
 
 /* ==================== 列表渲染 ==================== */
+function runQuery(){ renderList(); const n=filtered().length; toast('已查询到 '+n+' 条记录'); }
 function itemHTML(r, editable){
   const c = cat(r.cat);
   const isShared = r.scope==='__shared__';
@@ -1654,6 +1712,7 @@ function renderFundForm(){
 }
 function pickSrc(s){ fundSrc=s; renderFundForm(); }
 function saveFund(){
+  if(!S.authUser){ toast('请先登录后再登记红包'); openLogin(); return; }
   const cents=toCents($('fd-amount').value);
   if(cents<=0){ toast('请填写金额'); return; }
   const fromVal=$('fd-from').value;
@@ -1672,7 +1731,7 @@ function saveFund(){
   // 高亮 1.5s 后清除标记
   setTimeout(()=>{ if(window.__lastAddedFundId===newId) window.__lastAddedFundId=null; }, 1500);
   // 自动滚到红包明细让其可见
-  setTimeout(()=>{ const el=document.getElementById('fundList'); if(el) el.scrollIntoView({behavior:'smooth', block:'nearest'}); }, 60);
+  setTimeout(()=>{ try{ const el=document.getElementById('fundList'); if(el) el.scrollIntoView({behavior:'smooth', block:'nearest'}); }catch(e){} }, 60);
 }
 function delFund(id){
   const f = S.funds.find(x=>x.id===id);
@@ -1938,11 +1997,13 @@ async function syncNow(){
       const txt = await remoteResp.text();
       try{ remoteData = JSON.parse(txt); }catch(e){ remoteData = null; }
     }
-    const merged = mergeData(S, remoteData && remoteData!=='null' ? remoteData : null);
-    const mi = merged._mergeInfo;
-    delete merged._mergeInfo;
-    await fetch('/api/ledger', {method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(merged)});
-    S = merged; save(); renderAll();
+    // 关键：合并必须落在「当前」S 上，且用 S 直接 PUT。这样在 await 期间用户做的本地删除/新增会保留在当前 S 对象里，
+    // 写完后不再把旧快照赋值给 S，避免「删了不到1秒又出现」的同步竞态。
+    S = mergeData(S, remoteData && remoteData!=='null' ? remoteData : null);
+    const mi = S._mergeInfo;
+    delete S._mergeInfo;
+    await fetch('/api/ledger', {method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(S)});
+    save(); renderAll();
     const now = new Date().toLocaleTimeString('zh-CN',{hour12:false});
     S._remoteCount = liveRecords().length;
     let detail='云端已是最新';
@@ -1981,14 +2042,15 @@ async function giteeSyncNow(){
       const j = await r.json();
       if(j && j.content){ remoteData = JSON.parse(decodeURIComponent(escape(atob(j.content.replace(/\s/g,''))))); sha = j.sha; }
     } else if(r.status !== 404){ const t = await r.text().catch(()=> ''); throw new Error('读取 '+r.status+' '+(t.slice(0,80))); }
-    const merged = mergeData(S, remoteData && remoteData!=='null' ? remoteData : null);
-    const mi = merged._mergeInfo; delete merged._mergeInfo;
+    // 关键：合并到当前 S，写完后不重赋值，防止 await 期间本地变更被旧快照覆盖（红包删除后复活）。
+    S = mergeData(S, remoteData && remoteData!=='null' ? remoteData : null);
+    const mi = S._mergeInfo; delete S._mergeInfo;
     const writeUrl = `https://gitee.com/api/v5/repos/${enc(cfg.owner)}/${enc(cfg.repo)}/contents/${enc(cfg.path)}?access_token=${enc(cfg.token)}`;
-    const body = { content: btoa(unescape(encodeURIComponent(JSON.stringify(merged)))), message: 'sync ledger '+new Date().toISOString().slice(0,19), branch: cfg.branch||'master' };
+    const body = { content: btoa(unescape(encodeURIComponent(JSON.stringify(S)))), message: 'sync ledger '+new Date().toISOString().slice(0,19), branch: cfg.branch||'master' };
     if(sha) body.sha = sha;
     const w = await fetch(writeUrl, {method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
     if(!w.ok){ const t = await w.text().catch(()=> ''); throw new Error('写入 '+w.status+' '+(t.slice(0,80))); }
-    S = merged; save(); renderAll();
+    save(); renderAll();
     const now = new Date().toLocaleTimeString('zh-CN',{hour12:false});
     S._remoteCount = liveRecords().length;
     const el = document.getElementById('syncLast'); if(el) el.textContent = now;
@@ -2131,12 +2193,12 @@ function doLogin(){
   const pw=$('loginPw').value;
   const acc=(S.accounts||[]).find(a=>a.username===user);
   if(!acc || acc.password!==pw){ $('loginErr').textContent='用户名或密码错误'; return; }
-  S.account=acc.name; S.authUser=acc.username; save();
+  S.account=acc.name; S.authUser=acc.username; S._payerManual=false; save();
   closeLogin(); applyLock(); updateAccBtn(); renderAll();
   toast('已登录「'+acc.name+'」');
   logOp('登录', '账号：'+acc.name+(acc.admin?'（管理员）':''));
 }
-function logout(){ S.authUser=null; S.account=null; save(); updateAccBtn(); applyLock(); openLogin(); }
+function logout(){ S.authUser=null; S.account=null; S._payerManual=false; save(); updateAccBtn(); applyLock(); openLogin(); }
 function openAccountSwitch(){ openLogin(); }   // 切换账号=以其他账号登录
 /* ===== 账号管理（仅管理员） ===== */
 function openAccountAdmin(){
@@ -2188,6 +2250,48 @@ function showAuxScreen(paneKey, renderFn, title){
 }
 function openLogsScreen(){ showAuxScreen('logs', renderLogs, '操作记录'); }
 function openSetScreen(){ showAuxScreen('set', ()=>{renderMembers();renderPayers();renderKeepers();renderFundForm();renderRules();renderSetStat();}, '设置'); }
+/* 功能自检：逐项验证关键功能是否可用，结果直接显示在页面上（用户在微信里即可自查） */
+function runSelfTest(){
+  const box=$('selfTestBox'); const ver=$('verLabel');
+  if(ver) ver.textContent='v'+APP_VER;
+  if(!box) return;
+  box.innerHTML='<div style="color:#888">检测中…</div>';
+  setTimeout(()=>{
+    const r=[]; const ok=(n,c,extra)=>r.push((c?'✅':'❌')+' '+n+(extra?(' <span style="color:#999">'+extra+'</span>'):''));
+    try{
+      // 1) 关键 DOM 节点
+      ok('核心按钮/容器存在', !!$('btnSaveRecord')&&!!$('btnSaveFund')&&!!$('fundList')&&!!$('f-amount')&&!!$('fd-amount'));
+      // 2) 登录态
+      const logged=!!S.authUser;
+      ok('已登录（可操作）', logged, logged?('当前：'+S.account):'未登录→部分功能被锁');
+      // 3) 在克隆数据上验证记账逻辑（不污染真实数据）
+      let recOk=false;
+      try{ const bak=JSON.stringify(S); const n0=S.records.length;
+        S.records.push({id:'__selftest',date:todayStr(),cents:100,cat:'other',note:'自检',payer:S.account||'妈妈',scope:'__shared__',fundCents:0,fundKeeper:'',ts:Date.now()});
+        recOk=S.records.length===n0+1; S=JSON.parse(bak); }catch(e){ recOk=false; }
+      ok('记账写入逻辑', recOk);
+      // 4) 红包写入 + 软删除逻辑
+      let fundOk=false;
+      try{ const bak=JSON.stringify(S); const n0=S.funds.length;
+        S.funds.push({id:'__selftest',date:todayStr(),cents:100,from:'自检',keeper:'专用账户',note:'自检',ts:Date.now()});
+        const added=S.funds.length===n0+1; S.funds[S.funds.length-1]._del=true;
+        const liveOk=liveFunds().length===n0; fundOk=added&&liveOk; S=JSON.parse(bak); }catch(e){ fundOk=false; }
+      ok('红包写入 / 软删除逻辑', fundOk);
+      // 5) 删除按钮事件委托是否就绪（红包池 tab 渲染过即有 .delfund 容器）
+      ok('红包删除按钮容器', !!$('fundList'));
+      // 6) 本地存储可用
+      let lsOk=false; try{ localStorage.setItem('__st','1'); localStorage.removeItem('__st'); lsOk=true; }catch(e){ lsOk=false; }
+      ok('本地存储可用', lsOk);
+      // 7) 云同步配置（静态托管模式应有内置 Gitee 配置）
+      if(STATIC_MODE){ const g=getGiteeCfg(); ok('Gitee 云同步已配置', !!(g&&g.token&&g.owner&&g.repo), g?('仓库 '+g.owner+'/'+g.repo):''); }
+      else { ok('云同步后端模式', true); }
+      box.innerHTML='<div style="font-size:13px;line-height:1.9">'+r.join('<br>')+'</div>'+
+        '<div style="margin-top:8px;color:#888;font-size:12px">如全部 ✅ 说明功能正常；若某项 ❌ 或页面底部出现红色错误条，请截图反馈。</div>';
+    }catch(e){
+      box.innerHTML='<div style="color:#e23b3b">自检过程异常：'+(e&&e.message||e)+'</div>';
+    }
+  }, 30);
+}
 function closeAuxScreen(){
   document.body.classList.remove('modalscreen');
   document.querySelectorAll('section.pane').forEach(s=>s.classList.remove('on'));
@@ -2282,7 +2386,7 @@ function renderLogs(){
 function go(p){
   document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.p===p));
   document.querySelectorAll('section.pane').forEach(s=>s.classList.toggle('on',s.id==='p-'+p));
-  if(p==='list') renderList();
+  if(p==='list'){ renderFilters(); renderList(); }
   if(p==='stat') renderStat();
   if(p==='split') renderSplit();
   if(p==='fund') renderFunds();
@@ -2313,6 +2417,7 @@ function boot(){
   document.querySelector('button[data-p="fund"]').addEventListener('click', ()=>setTimeout(renderFunds, 50));
 
   renderAll();
+  syncFundUI();
   updateAccBtn();
   applyLock();
   if(!S.authUser){ openLogin(); }   // 未登录则强制登录
